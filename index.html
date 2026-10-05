@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détection Talents Foot Bénin</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f7f5;
+      color: #17231b;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #087443;
+      color: white;
+      text-align: center;
+      padding: 28px 15px;
+    }
+
+    header h1 {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 16px;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 850px;
+      margin: 30px auto 50px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .card h2 {
+      color: #087443;
+      margin-bottom: 18px;
+    }
+
+    .payment-box {
+      background: #eefaf3;
+      border: 2px solid #087443;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 25px;
+    }
+
+    .payment-box h3 {
+      color: #087443;
+      margin-bottom: 12px;
+    }
+
+    .payment-line {
+      margin: 8px 0;
+      font-size: 17px;
+    }
+
+    .important {
+      background: #fff6dc;
+      border-left: 5px solid #e6a400;
+      padding: 15px;
+      margin-top: 15px;
+      border-radius: 5px;
+      line-height: 1.5;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 7px;
+      margin-top: 17px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ccd5cf;
+      border-radius: 8px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #087443;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .btn {
+      width: 100%;
+      margin-top: 25px;
+      padding: 15px;
+      border: none;
+      border-radius: 9px;
+      background: #087443;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #065c35;
+    }
+
+    .btn:disabled {
+      background: #999;
+      cursor: not-allowed;
+    }
+
+    .success {
+      display: none;
+      background: #e8f8ee;
+      border: 2px solid #087443;
+      padding: 25px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .success h2 {
+      color: #087443;
+      margin-bottom: 15px;
+    }
+
+    .pending {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    .error {
+      display: none;
+      background: #ffe9e9;
+      border: 1px solid #cc3333;
+      color: #a00000;
+      padding: 14px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    .status-box {
+      display: none;
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 10px;
+      background: #f1f4f2;
+    }
+
+    .small {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #666;
+      font-size: 14px;
+    }
+
+    @media (max-width: 650px) {
+      header h1 {
+        font-size: 23px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .card {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>⚽ DÉTECTION TALENTS FOOT BÉNIN</h1>
+  <p>Inscription pour la détection des jeunes talents</p>
+</header>
+
+<div class="container">
+
+  <div id="formSection">
+
+    <div class="card">
+      <h2>💳 Paiement de l'inscription</h2>
+
+      <div class="payment-box">
+        <h3>Paiement manuel Celtiis</h3>
+
+        <div class="payment-line">
+          <strong>Montant :</strong> 1 000 FCFA
+        </div>
+
+        <div class="payment-line">
+          <strong>Numéro :</strong> 93699343
+        </div>
+
+        <div class="payment-line">
+          <strong>Nom du compte :</strong> Celtics
+        </div>
+
+        <div class="important">
+          <strong>Important :</strong><br>
+          Effectuez d'abord le transfert de <strong>1 000 FCFA</strong>
+          vers le numéro Celtiis <strong>93699343</strong>.
+          Après le paiement, prenez une capture d'écran de la confirmation
+          de transfert et joignez-la au formulaire ci-dessous.
+          <br><br>
+          <strong>La validation est faite manuellement.</strong>
+          Une capture d'écran seule ne signifie pas que le paiement est
+          automatiquement validé.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📝 Formulaire d'inscription</h2>
+
+      <form id="registrationForm">
+
+        <div class="grid">
+
+          <div>
+            <label for="category">Catégorie *</label>
+            <select id="category" name="category" required>
+              <option value="">Choisir</option>
+              <option value="U17">U17</option>
+              <option value="U20">U20</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="position">Poste *</label>
+            <select id="position" name="position" required>
+              <option value="">Choisir</option>
+              <option value="Gardien">Gardien</option>
+              <option value="Défenseur">Défenseur</option>
+              <option value="Milieu">Milieu</option>
+              <option value="Attaquant">Attaquant</option>
+              <option value="Ailier">Ailier</option>
+            </select>
+          </div>
+
+        </div>
+
+        <label for="name">Nom et prénom *</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Exemple : Jean Dupont"
+          required
+        >
+
+        <label for="birth">Date de naissance *</label>
+        <input
+          type="date"
+          id="birth"
+          name="birth"
+          required
+        >
+
+        <label for="phone">Numéro WhatsApp *</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="Exemple : 97 00 00 00"
+          required
+        >
+
+        <label for="email">Adresse Gmail *</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="exemple@gmail.com"
+          required
+        >
+
+        <label for="foot">Pied fort *</label>
+        <select id="foot" name="foot" required>
+          <option value="">Choisir</option>
+          <option value="Droit">Droit</option>
+          <option value="Gauche">Gauche</option>
+          <option value="Les deux">Les deux</option>
+        </select>
+
+        <label for="club">Club actuel</label>
+        <input
+          type="text"
+          id="club"
+          name="club"
+          placeholder="Nom du club ou Sans club"
+        >
+
+        <label for="screenshot">
+          Capture d'écran du paiement *
+        </label>
+
+        <input
+          type="file"
+          id="screenshot"
+          name="screenshot"
+          accept="image/jpeg,image/png,image/webp"
+          required
+        >
+
+        <p class="small">
+          Formats acceptés : JPG, PNG ou WEBP. Taille maximale : 5 Mo.
+        </p>
+
+        <div id="errorMessage" class="error"></div>
+
+        <button type="submit" id="submitBtn" class="btn">
+          Envoyer mon inscription
+        </button>
+
+      </form>
+    </div>
+
+  </div>
+
+  <div id="successSection" class="success">
+
+    <h2>✅ Inscription reçue</h2>
+
+    <p>
+      Votre formulaire et votre capture de paiement ont bien été reçus.
+    </p>
+
+    <p class="pending">
+      🕐 Statut : En attente de vérification
+    </p>
+
+    <p>
+      Notre équipe va vérifier votre capture d'écran ainsi que le paiement
+      sur le compte Celtiis.
+    </p>
+
+    <br>
+
+    <p>
+      Après validation, votre numéro de dossier vous sera communiqué.
+    </p>
+
+    <p>
+      Vous recevrez notre retour sur votre <strong>WhatsApp</strong>
+      ou votre <strong>Gmail</strong>.
+    </p>
+
+    <div id="statusBox" class="status-box"></div>
+
+  </div>
+
+</div>
+
+<footer>
+  <p>📍 Calavi / Godomey - Bénin</p>
+  <p>📱 WhatsApp : 40327191</p>
+  <p>💳 Paiement : Celtiis - 93699343</p>
+</footer>
+
+
+<script>
+
+const form = document.getElementById("registrationForm");
+const submitBtn = document.getElementById("submitBtn");
+const errorMessage = document.getElementById("errorMessage");
+
+form.addEventListener("submit", async function(event) {
+
+  event.preventDefault();
+
+  errorMessage.style.display = "none";
+  errorMessage.textContent = "";
+
+  const email = document.getElementById("email").value.trim();
+
+  if (!email.toLowerCase().endsWith("@gmail.com")) {
+    errorMessage.textContent =
+      "Veuillez utiliser une adresse Gmail valide.";
+    errorMessage.style.display = "block";
+    return;
+  }
+
+  const file = document.getElementById("screenshot").files[0];
+
+  if (!file) {
+    errorMessage.textContent =
+      "Veuillez joindre la capture d'écran du paiement.";
+    errorMessage.style.display = "block";
+    return;
+  }
+
+  if (file.size > 5 * 1024 * 1024) {
+    errorMessage.textContent =
+      "La capture d'écran ne doit pas dépasser 5 Mo.";
+    errorMessage.style.display = "block";
+    return;
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Envoi en cours...";
+
+  const formData = new FormData(form);
+
+  formData.append("amount", "1000");
+  formData.append("paymentNumber", "93699343");
+  formData.append("paymentName", "Celtics");
+
+  try {
+
+    const response = await fetch("/api/inscriptions", {
+      method: "POST",
+      body: formData
+    });
+
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      throw new Error(
+        result.message || "Une erreur est survenue."
+      );
+    }
+
+    localStorage.setItem(
+      "detection_registration_id",
+      result.id
+    );
+
+    document.getElementById("formSection").style.display = "none";
+    document.getElementById("successSection").style.display = "block";
+
+    checkStatus(result.id);
+
+  } catch (error) {
+
+    errorMessage.textContent = error.message;
+    errorMessage.style.display = "block";
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Envoyer mon inscription";
+  }
+
+});
+
+
+async function checkStatus(id) {
+
+  try {
+
+    const response = await fetch(
+      "/api/inscriptions/status/" + encodeURIComponent(id)
+    );
+
+    if (!response.ok) {
+      return;
+    }
+
+    const result = await response.json();
+
+    const statusBox = document.getElementById("statusBox");
+
+    if (result.status === "validated") {
+
+      statusBox.style.display = "block";
+
+      statusBox.innerHTML = `
+        <strong>🎉 Inscription validée !</strong>
+        <br><br>
+        Votre numéro de dossier est :
+        <br>
+        <strong style="font-size:24px;">
+          ${escapeHtml(result.dossier)}
+        </strong>
+        <br><br>
+        Notre équipe vous contactera également par WhatsApp ou Gmail.
+      `;
+
+      return;
+    }
+
+    if (result.status === "rejected") {
+
+      statusBox.style.display = "block";
+
+      statusBox.innerHTML = `
+        <strong>❌ Inscription non validée</strong>
+        <br><br>
+        ${escapeHtml(result.reason || "Veuillez contacter l'organisation.")}
+      `;
+
+      return;
+    }
+
+  } catch (error) {
+    console.log(error);
+  }
+
+}
+
+
+function escapeHtml(text) {
+
+  const div = document.createElement("div");
+  div.textContent = text || "";
+  return div.innerHTML;
+
+}
+
+</script>
+
+</body>
+</html>S
